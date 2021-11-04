@@ -47,9 +47,9 @@ Note that the 52North Sensor Observation Service will make its SOAP endpoint ava
 
 Once the export completes successfully, you can use the helgoland client that ships with the SOS to look at your data. In addition, you can use the service-endpoint to run queries.
 
-<img src="doc/helgoland.png" width="400" alt="Helgoland">
+<img src="doc/helgoland.png" width="300" alt="Helgoland">
 
-<img src="doc/testclient.png" width="400" alt="Test Client">
+<img src="doc/testclient.png" width="300" alt="Test Client">
 
 
 ## Customization
