@@ -1,0 +1,7 @@
+{
+  "library": "feign",
+  "modelPackage": "com.mowesta.feign.model",
+  "apiPackage": "com.mowesta.feign.api",
+  "invokerPackage": "com.mowesta.feign",
+  "dateLibrary": "java8"
+}

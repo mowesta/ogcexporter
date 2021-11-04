@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope
+    xmlns:env="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope/soap-envelope.xsd http://www.opengis.net/sos/2.0 http://schemas.opengis.net/sos/2.0/sosInsertSensor.xsd    http://www.opengis.net/swes/2.0 http://schemas.opengis.net/swes/2.0/swes.xsd">
+    <env:Body>
+        <swes:InsertSensor
+            xmlns:swes="http://www.opengis.net/swes/2.0"
+            xmlns:sos="http://www.opengis.net/sos/2.0"
+            xmlns:swe="http://www.opengis.net/swe/2.0"
+            xmlns:sml="http://www.opengis.net/sensorml/2.0"
+            xmlns:gml="http://www.opengis.net/gml/3.2"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:gco="http://www.isotc211.org/2005/gco"
+            xmlns:gmd="http://www.isotc211.org/2005/gmd" service="SOS" version="2.0.0">
+            <swes:procedureDescriptionFormat>http://www.opengis.net/sensorml/2.0</swes:procedureDescriptionFormat>
+            <swes:procedureDescription>
+                <sml:PhysicalSystem gml:id="${sensorId}">
+                    <gml:identifier codeSpace="uniqueID">${sensorIdentifier}</gml:identifier>
+                    <sml:identification>
+                        <sml:IdentifierList>
+                            <sml:identifier>
+                                <sml:Term definition="urn:ogc:def:identifier:OGC:1.0:longName">
+                                    <sml:label>longName</sml:label>
+                                    <sml:value>${longName}</sml:value>
+                                </sml:Term>
+                            </sml:identifier>
+                            <sml:identifier>
+                                <sml:Term definition="urn:ogc:def:identifier:OGC:1.0:shortName">
+                                    <sml:label>shortName</sml:label>
+                                    <sml:value>${shortName}</sml:value>
+                                </sml:Term>
+                            </sml:identifier>
+                        </sml:IdentifierList>
+                    </sml:identification>
+                    <sml:capabilities name="offerings">
+                        <sml:CapabilityList>
+                            <sml:capability name="offeringID">
+                                <swe:Text definition="urn:ogc:def:identifier:OGC:offeringID">
+                                    <swe:label>${offeringLabel}</swe:label>
+                                    <swe:value>${offering}</swe:value>
+                                </swe:Text>
+                            </sml:capability>
+                        </sml:CapabilityList>
+                    </sml:capabilities>
+                    <sml:capabilities name="metadata">
+                        <sml:CapabilityList>
+                            <sml:capability name="insitu">
+                                <swe:Boolean definition="insitu">
+                                    <swe:value>true</swe:value>
+                                </swe:Boolean>
+                            </sml:capability>
+                            <sml:capability name="mobile">
+                                <swe:Boolean definition="mobile">
+                                    <swe:value>true</swe:value>
+                                </swe:Boolean>
+                            </sml:capability>
+                        </sml:CapabilityList>
+                    </sml:capabilities>
+                    <sml:featuresOfInterest>
+                        <sml:FeatureList definition="${feature}">
+                            <swe:label>${featureLabel}</swe:label>
+                            <sml:feature xlink:href="${feature}"/>
+                        </sml:FeatureList>
+                    </sml:featuresOfInterest>
+                    <sml:outputs>
+                        <sml:OutputList>
+                            <sml:output name="Measurement">
+                                <swe:DataRecord>
+                                    <swe:field name="Temperature">
+                                        <swe:Quantity definition="http://www.mowesta.com/temperature">
+                                            <swe:uom code="°C"/>
+                                        </swe:Quantity>
+                                    </swe:field>
+                                    <swe:field name="Pressure">
+                                        <swe:Quantity definition="http://www.mowesta.com/pressure">
+                                            <swe:uom code="hPA"/>
+                                        </swe:Quantity>
+                                    </swe:field>
+                                    <swe:field name="Humidity">
+                                        <swe:Quantity definition="http://www.mowesta.com/humidity">
+                                            <swe:uom code="%"/>
+                                        </swe:Quantity>
+                                    </swe:field>
+                                </swe:DataRecord>
+                            </sml:output>
+                        </sml:OutputList>
+                    </sml:outputs>
+                </sml:PhysicalSystem>
+            </swes:procedureDescription>
+            <swes:observableProperty>http://www.mowesta.com/measurement</swes:observableProperty>
+            <swes:observableProperty>http://www.mowesta.com/temperature</swes:observableProperty>
+            <swes:observableProperty>http://www.mowesta.com/humidity</swes:observableProperty>
+            <swes:observableProperty>http://www.mowesta.com/pressure</swes:observableProperty>
+            <swes:metadata>
+                <sos:SosInsertionMetadata>
+                    <sos:observationType>http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation</sos:observationType>
+                    <sos:featureOfInterestType>http://www.opengis.net/def/samplingFeatureType/OGC-OM/2.0/SF_SamplingPoint</sos:featureOfInterestType>
+                </sos:SosInsertionMetadata>
+            </swes:metadata>
+        </swes:InsertSensor>
+    </env:Body>
+</env:Envelope>
